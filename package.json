@@ -1,5 +1,5 @@
 {
-  "name": "resume-astro",
+  "name": "resume",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,17 +7,49 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "prettier": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
-    "@astrojs/vue": "^4.0.8",
-    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^7.5.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@vercel/analytics": "^1.2.2",
     "astro": "^4.1.1",
-    "typescript": "^5.3.3",
-    "vue": "^3.4.13"
+    "clsx": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.4",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.4",
+    "prettier-plugin-astro": "^0.13.0",
     "sass": "^1.69.7"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.astro": ["eslint --fix", "astro check"]
   }
 }
