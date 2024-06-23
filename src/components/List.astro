@@ -1,0 +1,21 @@
+---
+import clsx from 'clsx';
+import Text from './Text.astro';
+
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className, ...rest } = Astro.props;
+---
+
+<ul class={clsx(className, 'list-disc list-inside space-y-2')} {...rest}>
+  {
+    items.map((item) => (
+      <li class="text-sm text-gray-500">
+        <Text inline text={item} />
+      </li>
+    ))
+  }
+</ul>

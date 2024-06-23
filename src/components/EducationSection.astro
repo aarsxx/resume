@@ -1,0 +1,31 @@
+---
+import Section from '@components/Section.astro';
+import Title from './Title.astro';
+import EducationWorkExperienceItem from './EducationWorkExperienceItem.astro';
+import VStack from './VStack.astro';
+import type { Education } from '@data/profile';
+
+interface Props {
+  education: Array<Education>;
+  class?: string;
+}
+
+const { education, class: className, ...rest } = Astro.props;
+---
+
+<Section class={className} noBreak {...rest}>
+  <Title level="section" text="Education" />
+  <VStack gap="2">
+    {
+      education.map((item) => (
+        <EducationWorkExperienceItem
+          title={item.name}
+          startPeriod={item.startDate}
+          endPeriod={item.endDate}
+          activities={item.degree}
+          url={item.website}
+        />
+      ))
+    }
+  </VStack>
+</Section>

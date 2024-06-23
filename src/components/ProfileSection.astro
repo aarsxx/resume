@@ -1,0 +1,100 @@
+---
+import avatarImage from '@assets/images/avatar.jpg';
+import Section from '@components/Section.astro';
+import Text from './Text.astro';
+import Title from './Title.astro';
+import HStack from './HStack.astro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import IconLink from '@components/IconLink.astro';
+import VStack from './VStack.astro';
+import Avatar from './Avatar.astro';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { faEarthAsia } from '@fortawesome/free-solid-svg-icons';
+import Badge from './Badge.astro';
+
+interface Props {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  jobTitle: string;
+  languages: string[];
+  about: string;
+  city: string;
+  country: string;
+  email: string;
+  githubId?: string;
+  linkedInId?: string;
+  class?: string;
+}
+
+const {
+  firstName,
+  middleName,
+  lastName,
+  jobTitle,
+  languages,
+  about,
+  city,
+  country,
+  email,
+  githubId,
+  linkedInId,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ');
+---
+
+<Section noBreak class={className} {...rest}>
+  <HStack gap="2" verticalAlign="center">
+    <VStack>
+      <Title level="page" text={fullName} />
+
+      <Title level="subitem" text={jobTitle} />
+
+      <HStack gap="1" class="my-2">
+        {languages.map((item) => <Badge text={item} />)}
+      </HStack>
+
+      <Text text={about} />
+
+      <HStack gap="1" class="my-2">
+        <IconLink href="mailto:ibara1454@gmail.com">
+          <FontAwesomeIcon icon={faEnvelope} />
+        </IconLink>
+
+        {
+          // Only show GitHub link if `githubId` is set
+          githubId && (
+            <IconLink href={`https://github.com/${githubId}`}>
+              <FontAwesomeIcon icon={faGithub} />
+            </IconLink>
+          )
+        }
+
+        {
+          // Only show LinkedIn link if `linkedInId` is set
+          linkedInId && (
+            <IconLink href={`https://www.linkedin.com/in/${linkedInId}`}>
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </IconLink>
+          )
+        }
+      </HStack>
+
+      <HStack verticalAlign="center">
+        <FontAwesomeIcon
+          icon={faEarthAsia}
+          size="xs"
+          className="text-gray-500 mr-2"
+        />
+        <Text text={`${city}, ${country}`} />
+      </HStack>
+    </VStack>
+
+    <Avatar src={avatarImage} alt="Avatar image" />
+  </HStack>
+</Section>

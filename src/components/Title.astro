@@ -1,0 +1,64 @@
+---
+import clsx from 'clsx';
+
+type TitleLevel = 'page' | 'section' | 'item' | 'subitem';
+
+interface Props {
+  level: TitleLevel;
+  text: string;
+  class?: string;
+}
+
+const { class: className, text, level, ...rest } = Astro.props;
+---
+
+{
+  level === 'page' && (
+    <h1
+      class={clsx([className, 'text-3xl font-bold leading-relaxed mb-3'])}
+      {...rest}
+    >
+      {text}
+    </h1>
+  )
+}
+{
+  level === 'section' && (
+    <h2
+      class={clsx([className, 'text-xl font-bold leading-relaxed mb-3'])}
+      {...rest}
+    >
+      {text}
+    </h2>
+  )
+}
+{
+  level === 'item' && (
+    <h3
+      class={clsx([className, 'text-base font-semibold leading-relaxed'])}
+      {...rest}
+    >
+      {text}
+    </h3>
+  )
+}
+{
+  level === 'subitem' && (
+    <h4
+      class={clsx([className, 'text-sm font-normal leading-relaxed font-mono'])}
+      {...rest}
+    >
+      {text}
+    </h4>
+  )
+}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Inter', sans-serif;
+  }
+</style>

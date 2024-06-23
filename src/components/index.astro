@@ -1,0 +1,38 @@
+---
+import PrintableLayout from '@components/PrintableLayout.astro';
+import CertificationsSection from './_components/CertificationsSection.astro';
+import ProfileSection from './_components/ProfileSection.astro';
+import EducationSection from './_components/EducationSection.astro';
+import WorkExperienceSection from './_components/WorkExperienceSection.astro';
+import SkillsSection from './_components/SkillsSection.astro';
+import VStack from './_components/VStack.astro';
+import { profile } from '@data/profile';
+import Layout from '@layouts/Layout.astro';
+
+const { summary, contact, experience, education, skills, certifications } =
+  profile;
+---
+
+<Layout title="Resume">
+  <PrintableLayout>
+    <VStack gap="4" horizontalAlign="stretch">
+      <ProfileSection
+        firstName={summary.name.first}
+        middleName={summary.name.middle}
+        lastName={summary.name.last}
+        jobTitle={summary.jobTitle}
+        languages={summary.languages}
+        about={summary.about}
+        city={contact.city}
+        country={contact.country}
+        email={contact.email}
+        githubId={contact.githubId}
+        linkedInId={contact.linkedInId}
+      />
+      <SkillsSection skills={skills.map((item) => item.name)} />
+      <WorkExperienceSection experience={experience} />
+      <EducationSection education={education} />
+      <CertificationsSection certifications={certifications} />
+    </VStack>
+  </PrintableLayout>
+</Layout>
