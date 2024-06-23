@@ -1,146 +1,38 @@
 ---
-import { Image } from 'astro:assets';
-import PageContainer from "@components/PageContainer.astro";
-import Page from "@components/Page.astro";
-import avatarImage from "@assets/images/avatar.jpg";
-import ProfileTitle from "./_components/ProfileTitle.vue";
-import ProfileContact from "./_components/ProfileContact.vue";
-import ProfileExperience from "./_components/ProfileExperience.vue";
-import ProfileEducation from "./_components/ProfileEducation.vue";
-import ProfileSkills from "./_components/ProfileSkills.vue";
-import ProfileQualifications from "./_components/ProfileQualifications.vue";
-import data from "../data/profile";
+import PrintableLayout from '@components/PrintableLayout.astro';
+import CertificationsSection from './_components/CertificationsSection.astro';
+import ProfileSection from './_components/ProfileSection.astro';
+import EducationSection from './_components/EducationSection.astro';
+import WorkExperienceSection from './_components/WorkExperienceSection.astro';
+import SkillsSection from './_components/SkillsSection.astro';
+import VStack from './_components/VStack.astro';
+import { profile } from '@data/profile';
+import Layout from '@layouts/Layout.astro';
 
+const { summary, contact, experience, education, skills, certifications } =
+  profile;
 ---
 
-<PageContainer>
-  <Page class="resume page">
-    <!-- The profile header -->
-    <div class="left-header">
-      <Image class="avatar" src={avatarImage} alt="Avatar image" />
-    </div>
-    <div class="right-header">
-      <ProfileTitle summary={data.summary} />
-    </div>
-
-    <!-- The side part -->
-    <aside class="left-body">
-      <ProfileContact class="contacts" contact={data.contact} />
-      <ProfileSkills class="skills" skills={data.skills} />
-      <ProfileQualifications
-        class="qualifications"
-        qualifications={data.qualifications}
+<Layout title="Resume">
+  <PrintableLayout>
+    <VStack gap="4" horizontalAlign="stretch">
+      <ProfileSection
+        firstName={summary.name.first}
+        middleName={summary.name.middle}
+        lastName={summary.name.last}
+        jobTitle={summary.jobTitle}
+        languages={summary.languages}
+        about={summary.about}
+        city={contact.city}
+        country={contact.country}
+        email={contact.email}
+        githubId={contact.githubId}
+        linkedInId={contact.linkedInId}
       />
-    </aside>
-
-    <!-- The main part -->
-    <section class="right-body">
-      <ProfileExperience
-        class="experience"
-        experience={data.experience}
-      />
-      <ProfileEducation
-        class="educations"
-        education={data.education}
-      />
-    </section>
-  </Page>
-</PageContainer>
-
-<style lang="scss" is:global>
-@import "@fortawesome/fontawesome-free/css/all.min.css";
-@import "./variables";
-
-@import "@assets/fonts/noto-sans-jp/noto-sans-jp.css";
-@import "@assets/fonts/roboto/roboto.css";
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
-
-@media print {
-  // Unset the margin of each page.
-  @page {
-    margin: 0;
-  }
-
-  * {
-    -webkit-print-color-adjust: exact;
-  }
-}
-
-$background-color: #ffffff;
-$border: 2px solid rgb(211, 211, 211);
-
-$avatar-size: 220px;
-
-@mixin frame-padding() {
-  padding: $space-small $space-medium;
-}
-
-@mixin super-centered() {
-  display: grid;
-  place-items: center;
-}
-
-.resume {
-  font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.03em;
-  line-height: 1.65;
-  background: $background-color;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.page {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-}
-
-.left-header,
-.right-header,
-.left-body,
-.right-body {
-  // Each child
-  & > * {
-    @include frame-padding();
-  }
-}
-
-.left-header,
-.right-header,
-.left-body {
-  & > *:not(:first-child) {
-    border-top: $border;
-  }
-}
-
-.left-header {
-  @include super-centered();
-
-  border-bottom: $border;
-}
-
-.right-header {
-  border-bottom: $border;
-}
-
-.left-body {
-  text-align: right;
-  border-right: $border;
-}
-
-.right-body {
-}
-
-.avatar {
-  width: $avatar-size;
-  height: $avatar-size;
-
-  filter: grayscale(70%) brightness(110%) contrast(110%);
-
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 0% 50%;
-}
-</style>
+      <SkillsSection skills={skills.map((item) => item.name)} />
+      <WorkExperienceSection experience={experience} />
+      <EducationSection education={education} />
+      <CertificationsSection certifications={certifications} />
+    </VStack>
+  </PrintableLayout>
+</Layout>
