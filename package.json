@@ -1,0 +1,23 @@
+{
+  "name": "resume-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "@astrojs/vue": "^4.0.8",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "astro": "^4.1.1",
+    "typescript": "^5.3.3",
+    "vue": "^3.4.13"
+  },
+  "devDependencies": {
+    "sass": "^1.69.7"
+  }
+}
