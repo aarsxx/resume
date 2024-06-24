@@ -1,0 +1,158 @@
+{
+  "basics": {
+    "name": "Andika Leonardo",
+    "label": "Full Stack Engineer building user-friendly products with close attention to detail.",
+    "image": "",
+    "email": "leonardodika.13@gmail.com",
+    "url": "https://arsx.xyz",
+    "download": "",
+    "summary": "As a Full Stack Developer, I've successfully taken multiple products. I tackle tasks with enthusiasm and a commitment to excellence, whether it's adding features or fixing bugs. Currently, I work mostly with TypeScript, React, Next, Node and Tailwind. I have over 2 years of experience working remotely with clients and companies.",
+    "location": {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "timezone": "UTC+7",
+      "maps": "https://maps.app.goo.gl/DWyDXFi3ZKuAskb66"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "aarsxx",
+        "url": "https://github.com/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "leonardodika",
+        "url": "https://linkedin.com/in/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Brave Browser",
+      "position": "iOS Engineer",
+      "remote": true,
+      "url": "https://brave.com",
+      "startYear": "2019",
+      "endYear": "2020",
+      "summary": "Develop bookmark saving feature that integrates functionalities for user management, browser config, session management. Migrate and replace core feature from Swift to obj-c"
+    },
+    {
+      "name": "Apple Developer Academy",
+      "position": "iOS Engineer Intern",
+      "remote": false,
+      "url": "https://workana.com/freelancer/17ffa35831ec4c7d66e49ab0cbad0e69",
+      "startYear": "2019",
+      "endYear": "2020",
+      "summary": " Generate creative and innovative app concepts and conduct in-depth user research to understand user needs, behaviors, and\nmotivations. Make the product into high-fidelity prototypes and Mvp. ▪ Conduct product tests to gather feedback, identify usability issues, and iterate on tech"
+    },
+    {
+      "name": "Bukalapak",
+      "position": "iOS Engineer Intern",
+      "remote": false,
+      "url": "https://bukalapak.com",
+      "startYear": "2018",
+      "endYear": "2019",
+      "summary": "Handle the seamless migration of internal tools within the Customer Experience from Objective-C to Swift. Ensure the maintenance of feature parity and preservation of all pre-existing functionalities throughout the entire transition process"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Bina Nusantara University",
+      "url": "https://www.binus.ac.id",
+      "area": "Computer Science",
+      "studyType": "Bachelor's Degree",
+      "startYear": "2016",
+      "endYear": "2020"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Desarrollo de sitios 3D con Next Js y Typescript",
+      "date": "2024-02-26",
+      "issuer": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-0407b9c5-2f85-403c-a968-5e5d4c62bbde"
+    },
+    {
+      "name": "Python, Data Science en OCI y Oracle Analytics - ONE",
+      "date": "2023-10-04",
+      "issuer": "Alura",
+      "url": "https://app.aluracursos.com/user/santraez/degree-data-science-oci-oracle-one-15451/certificate"
+    },
+    {
+      "name": "TypeScript sin fronteras: guía definitiva",
+      "date": "2023-07-05",
+      "issuer": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-e3d6dd15-41d8-49b2-8df5-9db135da315a"
+    },
+    {
+      "name": "Principiante en Programación G4 - ONE",
+      "date": "2023-01-03",
+      "issuer": "Alura",
+      "url": "https://app.aluracursos.com/user/santraez/degree-programacion-primeros-pasos-grupo4-one-15491/certificate"
+    },
+    {
+      "name": "Master en React: Aprender ReactJS, Hooks, MERN, NodeJS, JWT+",
+      "date": "2022-08-15",
+      "issuer": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-3d46dba6-4663-48a9-b0e7-6c6f31f955d0"
+    }
+  ],
+  "publications": [{
+    "name": "Publication",
+    "publisher": "Company",
+    "releaseDate": "2014",
+    "url": "https://publication.com",
+    "summary": "Description…"
+  }],
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Node",
+    "React",
+    "ReactNative",
+    "Electron",
+    "Next",
+    "Astro",
+    "Redux",
+    "TailwindCSS",
+    "Git",
+    "Docker",
+    "Linux",
+    "MongoDB",
+    "MySQL",
+    "Figma"
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Bahasa",
+      "fluency": "Native"
+    },
+    {
+      "language": "Chinese",
+      "fluency": "Intermedite"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Random",
+      "releaseDate": "2023",
+      "description": "Web Application for easy choices, sorting, grouping, and assigning tasks randomly.",
+      "url": "https://random.ccc.zone/",
+      "repository": "https://github.com/codecatcoffee/random",
+      "isActive": true,
+      "keywords": [
+        "JavaScript",
+        "React",
+        "Node",
+        "MongoDB"
+      ]
+    }
+  ]
+}

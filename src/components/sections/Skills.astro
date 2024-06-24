@@ -1,0 +1,66 @@
+---
+import { resume } from '@/schema'
+import Section from '@/components/Section.astro'
+import type { SocialIcon } from '@/types'
+import HTML from '@/components/icons/HTML.astro'
+import CSS from '@/components/icons/CSS.astro'
+import JavaScript from '@/components/icons/JavaScript.astro'
+import TypeScript from '@/components/icons/TypeScript.astro'
+import Python from '@/components/icons/Python.astro'
+import Node from '@/components/icons/Node.astro'
+import React from '@/components/icons/React.astro'
+import ReactNative from '@/components/icons/ReactNative.astro'
+import Electron from '@/components/icons/Electron.astro'
+import Next from '@/components/icons/Next.astro'
+import Atr from '@/components/icons/Astro.astro'
+import Redux from '@/components/icons/Redux.astro'
+import TailwindCSS from '@/components/icons/TailwindCSS.astro'
+import Git from '@/components/icons/Git.astro'
+import Docker from '@/components/icons/Docker.astro'
+import Linux from '@/components/icons/Linux.astro'
+import MongoDB from '@/components/icons/MongoDB.astro'
+import MySQL from '@/components/icons/MySQL.astro'
+import Figma from '@/components/icons/Figma.astro'
+
+const SKILL_ICONS:SocialIcon = {
+  HTML,
+  CSS,
+  JavaScript,
+  TypeScript,
+  Python,
+  Node,
+  React,
+  ReactNative,
+  Electron,
+  Next,
+  Astro: Atr,
+  Redux,
+  TailwindCSS,
+  Git,
+  Docker,
+  Linux,
+  MongoDB,
+  MySQL,
+  Figma
+}
+---
+
+<Section title='Skills'>
+  <div class='flex print:-m-[9px] pt-1 flex-wrap gap-1'>
+    {resume?.skills.map((skill) => {
+      const Icon = SKILL_ICONS[skill]
+      return (
+        <div class='flex flex-row print:border print:border-slate-200 gap-1.5 justify-center items-center rounded-md px-2 py-0.5 dark:bg-slate-800 bg-[#ecf0f5]'>
+          {Icon && (
+            <span class='dark:text-slate-300 text-slate-600'>
+              <Icon />
+            </span>
+          )}
+          <span class='text-[13px] font-sans dark:text-slate-100 text-slate-800'>
+            {skill}
+          </span>
+        </div>
+      )
+    })}
+  </div>
+</Section>

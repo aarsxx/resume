@@ -1,0 +1,93 @@
+---
+import { resume } from '@/schema'
+import CodePen from '@/components/icons/CodePen.astro'
+import Email from '@/components/icons/Email.astro'
+import GitHub from '@/components/icons/GitHub.astro'
+import HeroButton from '@/components/HeroButton.astro'
+import LinkedIn from '@/components/icons/LinkedIn.astro'
+import Pin from '@/components/icons/Pin.astro'
+import Portfolio from '@/components/icons/Portfolio.astro'
+import Section from '@/components/Section.astro'
+import type { SocialIcon } from '@/types'
+
+const SOCIAL_ICONS: SocialIcon = {
+  GitHub,
+  LinkedIn,
+  CodePen
+}
+---
+
+<Section>
+  <div class='w-full print:-mb-4 h-auto flex flex-row justify-start md:justify-between space-x-4 items-center'>
+    <header class='w-full h-auto flex flex-col justify-start items-start space-y-1.5'>
+      <h1 class='font-sans text-slate-800 dark:text-slate-100 mb-[2px] text-2xl font-bold'>
+        {resume?.basics.name}
+      </h1>
+      <p class='text-pretty max-w-md text-sm dark:text-slate-300 text-slate-600'>
+        {resume?.basics.label}
+      </p>
+      <p class='max-w-md text-xs dark:text-slate-300 text-slate-600'>
+        <a
+          class='group/maps inline-flex gap-x-1.5 align-baseline items-center leading-none hover:underline'
+          href={resume?.basics.location.maps}
+          rel='noopener noreferrer'
+          target='_blank'
+          title='Google Maps'
+        >
+          <Pin />
+          {resume?.basics.location.city}, {resume?.basics.location.country} ({resume?.basics.location.timezone})
+        </a>
+      </p>
+      <div class='w-full print:pt-3.5 print:-mx-[11px] h-auto print:h-[58px] flex flex-row print:flex-wrap justify-start items-center gap-x-1.5 print:gap-0.5 pt-1'>
+        <HeroButton
+          title='Email'
+          url={`mailto:${resume?.basics.email}`}
+        >
+          <Email />
+          <span class='hidden text-xs print:block'>
+            {resume?.basics.email}
+          </span>
+        </HeroButton>
+        <HeroButton
+          title='Portfolio'
+          url={resume?.basics.url ?? '#'}
+        >
+          <Portfolio />
+          <span class='hidden text-xs print:block'>
+            {resume?.basics.url.slice(8)}
+          </span>
+        </HeroButton>
+        {resume?.basics.profiles.map(({ network, url, username }) => {
+          const Icon = SOCIAL_ICONS[network]
+          return (
+            <HeroButton
+              title={network}
+              url={`${url}${username}`}
+            >
+              {Icon && <Icon />}
+              <span class='hidden text-xs print:block'>
+                {`${network === 'LinkedIn' ? '/in/' : '/'}${username}`}
+              </span>
+            </HeroButton>
+        )})}
+      </div>
+    </header>
+    <figure class='relative flex dark:bg-[#172033] bg-[#EAEFF5] py-2 print:border-y print:border-slate-200 shrink-0 w-28 overflow-hidden rounded-md'>
+      <img
+        alt='profile picture'
+        class='w-full h-full grayscale-[25%] rounded-md object-cover'
+        draggable={false}
+        src='./assets/me.png'
+      />
+    </figure>
+  </div>
+</Section>
+
+<script>
+  const header = document.querySelector('header')?.offsetHeight
+  const figure = document.querySelector('figure')
+
+  if (header && figure) {
+    figure.style.height = `${header}px`
+  }
+</script>

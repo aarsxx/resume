@@ -1,0 +1,17 @@
+---
+import { resume } from '@/schema'
+import Section from '@/components/Section.astro'
+---
+
+<Section title='Languages'>
+  {resume?.languages.map(({ language, fluency }) => (
+    <h3 class='inline-flex font-sans w-full h-auto dark:text-slate-100 text-slate-800 items-center justify-start gap-x-1.5 font-medium'>
+      {language}
+      <div class='flex justify-center items-center rounded-md px-2 py-0.5 dark:bg-slate-900 bg-slate-100'>
+        <span class='text-xs font-medium dark:text-slate-400 text-slate-600 text-nowrap'>
+          {fluency}
+        </span>
+      </div>
+    </h3>
+  ))}
+</Section>

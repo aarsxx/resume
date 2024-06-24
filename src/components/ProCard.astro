@@ -1,0 +1,67 @@
+---
+import GitHub from '@/components/icons/GitHub.astro'
+
+interface Props {
+  name: string
+  releaseDate?: string
+  description: string
+  url: string
+  repository: string
+  isActive: boolean
+  keywords: string[]
+}
+
+const {
+  name,
+  description,
+  url,
+  repository,
+  isActive,
+  keywords
+} = Astro.props;
+---
+
+<div class='rounded-md w-full h-auto space-y-2.5 flex flex-col justify-between items-start overflow-hidden border border-slate-200 dark:border-slate-800 pt-1.5 pb-3.5 px-3'>
+  <div class='w-full h-auto flex flex-col'>
+    <div class='space-y-1 w-full h-auto flex flex-col justify-start items-start'>
+      <div class='w-full h-auto flex flex-row justify-between items-center'>
+        <h3 class='inline-flex font-sans dark:text-slate-100 text-slate-800 items-center justify-center font-medium'>
+          <a
+            href={url}
+            target='_blank'
+            rel='noopener noreferrer'
+            class='inline-flex items-center gap-1 hover:underline'
+          >
+            {name}
+          </a>
+          &nbsp;
+          <span class={`${isActive ? 'animate-pulse text-green-500' : 'text-slate-300'} text-lg`}>
+            &bull;
+          </span>
+        </h3>
+        <a
+          href={repository}
+          target='_blank'
+          rel='noopener noreferrer'
+          class='group/hero-button print:hidden transition delay-0 hover:delay-75 active:delay-0 dark:text-slate-300 text-slate-600'
+        >
+          <GitHub />
+        </a>
+      </div>
+      <p class='text-pretty pr-12 dark:text-slate-300 text-slate-600 text-xs'>
+        {description}
+      </p>
+    </div>
+  </div>
+  <div class='text-pretty font-mono text-sm text-muted-foreground mt-auto flex'>
+    <div class='flex flex-wrap gap-1'>
+      {keywords.map((keyword) => (
+        <div class='flex print:border print:border-slate-200 justify-center items-center rounded-md px-1.5 py-[1px] dark:bg-slate-900 bg-slate-100'>
+          <span class='font-sans text-[10px] font-medium text-slate-500 text-nowrap'>
+            {keyword}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

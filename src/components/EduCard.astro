@@ -1,0 +1,46 @@
+---
+interface Props {
+  area: string
+  endYear?: string
+  institution: string
+  startYear: string
+  studyType: string
+  url: string
+}
+
+const {
+  area,
+  endYear = 'Now',
+  institution,
+  startYear,
+  studyType,
+  url,
+} = Astro.props
+---
+
+<div class='w-full h-auto flex flex-col justify-start items-start space-y-2'>
+  <div class='w-full h-auto flex flex-col justify-start items-start space-y-1.5'>
+    <div class='w-full h-auto flex flex-row justify-between items-center'>
+      <h3 class='inline-flex font-sans dark:text-slate-100 text-slate-800 items-center justify-center font-medium'>
+        <a
+          href={url}
+          target='_blank'
+          rel='noopener noreferrer'
+          class='hover:underline'
+        >
+          {institution}
+        </a>
+      </h3>
+      <span class='font-light text-[15px] font-sans dark:text-slate-300 text-slate-600 tabular-nums'>
+        {`${startYear} - ${endYear}`}
+      </span>
+    </div>
+    <h4 class='text-sm dark:text-slate-100 text-slate-800 leading-none text-left'>
+      {studyType}
+    </h4>
+  </div>
+  <p class='text-pretty dark:text-slate-300 text-slate-600 mt-2 text-xs'>
+    {area}
+  </p>
+</div>
+

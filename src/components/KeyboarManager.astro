@@ -1,0 +1,221 @@
+---
+import { resume } from '@/schema'
+import Theme from '@/components/icons/Theme.astro'
+
+interface Data {
+  id: string
+  section: string
+  title: string
+  icon: any
+  hotkey?: string
+  url?: string
+}
+
+const ICONS: Record<string, string> = {
+  Print: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='none' stroke-width='2' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z'/></svg>`,
+  Download: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='none' stroke-width='2' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none' transform='matrix(1, 0, 0, 1, 4.440892098500626e-16, 4.440892098500626e-16)'/><path d='M 2.389 17.413 L 2.389 19.818 C 2.389 21.147 3.467 22.225 4.796 22.225 L 19.234 22.225 C 20.562 22.225 21.64 21.147 21.64 19.818 L 21.64 17.413' style='' transform='matrix(1, 0, 0, 1, 4.440892098500626e-16, 4.440892098500626e-16)'/><path d='M 5.998 10.194 L 12.015 16.21 L 18.03 10.194' style='' transform='matrix(1, 0, 0, 1, 4.440892098500626e-16, 4.440892098500626e-16)'/><path d='M 12.015 1.773 L 12.015 16.21' style='' transform='matrix(1, 0, 0, 1, 4.440892098500626e-16, 4.440892098500626e-16)'/></svg>`,
+  Theme: `<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' style='margin-right: 8px' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'/><path d='M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z' /><path d='M7 20h10' /><path d='M9 16v4' /><path d='M15 16v4' /></svg>`,
+  Email: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='none' stroke-width='2' stroke='currentColor'><rect width='20' height='16' x='2' y='4' rx='2' /><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7' /></svg>`,
+  Portfolio: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='none' stroke-width='2' stroke='currentColor'><circle cx='12' cy='12' r='10' /><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20' /><path d='M2 12h20' /></svg>`,
+  GitHub: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='currentColor'><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12' /></svg>`,
+  LinkedIn: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='currentColor'><path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' /></svg>`,
+  CodePen: `<svg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' style='margin-right: 8px' fill='currentColor'><path d='M18.144 13.067v-2.134L16.55 12zm1.276 1.194a.628.628 0 01-.006.083l-.005.028-.011.053-.01.031c-.005.016-.01.031-.017.047l-.014.03a.78.78 0 01-.021.043l-.019.03a.57.57 0 01-.08.1l-.026.025a.602.602 0 01-.036.03l-.029.022-.01.008-6.782 4.522a.637.637 0 01-.708 0L4.864 14.79l-.01-.008a.599.599 0 01-.065-.052l-.026-.025-.032-.034-.021-.028a.588.588 0 01-.067-.11l-.014-.031a.644.644 0 01-.017-.047l-.01-.03c-.004-.018-.008-.036-.01-.054l-.006-.028a.628.628 0 01-.006-.083V9.739c0-.028.002-.055.006-.083l.005-.027.011-.054.01-.03a.574.574 0 01.12-.217l.031-.034.026-.025a.62.62 0 01.065-.052l.01-.008 6.782-4.521a.638.638 0 01.708 0l6.782 4.521.01.008.03.022.035.03c.01.008.017.016.026.025a.545.545 0 01.08.1l.019.03a.633.633 0 01.021.043l.014.03c.007.016.012.032.017.047l.01.031c.004.018.008.036.01.054l.006.027a.619.619 0 01.006.083zM12 0C5.373 0 0 5.372 0 12 0 18.627 5.373 24 12 24c6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12m0 10.492L9.745 12 12 13.51 14.255 12zm.638 4.124v2.975l4.996-3.33-2.232-1.493zm-6.272-.356l4.996 3.33v-2.974l-2.764-1.849zm11.268-4.52l-4.996-3.33v2.974l2.764 1.85zm-6.272-.356V6.41L6.366 9.74l2.232 1.493zm-5.506 1.549v2.134L7.45 12Z' /></svg>`
+}
+
+const actionsData: Data[] = [
+  {
+    id: 'print',
+    section: 'Actions',
+    title: 'Print',
+    icon: ICONS.Print,
+    hotkey: 'ctrl+P'
+  },
+  {
+    id: 'download',
+    section: 'Actions',
+    title: 'Download',
+    icon: ICONS.Download,
+    hotkey: 'ctrl+D'
+  },
+  {
+    id: 'theme',
+    section: 'Actions',
+    title: 'Change theme...',
+    icon: ICONS.Theme
+  }
+]
+
+const linksData: Data[] | undefined = resume?.basics.profiles.map(({ network, url, username }): Data => {
+  const icon = ICONS[network]
+  const firstLetter = network[0].toUpperCase()
+
+  return {
+    id: network.toLowerCase(),
+    section: 'Links',
+    title: network,
+    icon,
+    url: `${url}${username}`,
+    hotkey: `ctrl+${firstLetter}`
+  }
+})
+
+linksData?.unshift({
+  id: 'portfolio',
+  section: 'Links',
+  title: 'Portfolio',
+  icon: ICONS.Portfolio,
+  url: resume?.basics.url,
+  hotkey: 'ctrl+Enter'
+})
+
+linksData?.unshift({
+  id: 'email',
+  section: 'Links',
+  title: 'Email',
+  icon: ICONS.Email,
+  hotkey: 'ctrl+E',
+  url: `mailto:${resume?.basics.email}`
+})
+---
+
+<footer class='fixed bottom-0 left-0 right-0 hidden border-t dark:border-slate-800 border-slate-200 bg-slate-50 dark:bg-slate-950 p-1 print:hidden md:block'>
+  <div class='relative w-full h-full text-center flex justify-center items-center'>
+    <span class='text-sm font-sans dark:text-slate-400 text-slate-500'>
+      Press
+      <kbd class='text-xs border dark:border-slate-800 border-slate-200 bg-slate-100 dark:bg-[#172033] font-medium text-slate-800 dark:text-slate-100 rounded py-[2px] px-1'>Ctrl</kbd>
+      +
+      <kbd class='text-xs border dark:border-slate-800 border-slate-200 bg-slate-100 dark:bg-[#172033] font-medium text-slate-800 dark:text-slate-100 rounded py-[2px] px-1'>K</kbd>
+      to open the command menu.
+    </span>
+    <button
+      id='themeToggle'
+      class='group/theme-button dark:bg-[#172033] text-slate-600 dark:text-slate-400 dark:border-[#172033] dark:active:border-[#172033] dark:hover:border-slate-700 absolute space-x-1 flex flex-row justify-start items-center right-1 top-1/2 -translate-y-1/2 border bg-[#EAEFF5] border-slate-100 active:border-slate-100 hover:border-slate-300 rounded py-[2px] pl-1 pr-1.5'
+    >
+      <Theme />
+      <span class='text-xs font-sans transition delay-0 group-hover/theme-button:delay-75 group-active/theme-button:delay-0 group-hover/theme-button:text-slate-800 dark:group-hover/theme-button:text-slate-100 dark:text-slate-300 text-slate-600'>
+        Change theme...
+      </span>
+    </button>
+  </div>
+</footer>
+
+<button
+  id='ninja-button'
+  class='items-center drop-shadow-xl justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border text-slate-800 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 hover:text-slate-800 size-14 aspect-square fixed bottom-4 right-4 flex rounded-full shadow-2xl print:hidden md:hidden'
+>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke-width='2'
+    stroke-linecap='round'
+    stroke-linejoin='round'
+    class='size-7 stroke-current dark:stroke-white'
+  >
+    <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
+  </svg>
+</button>
+
+<ninja-keys
+  data-actions={JSON.stringify(actionsData)}
+  data-links={JSON.stringify(linksData)}
+  hideBreadcrumbs
+  noAutoLoadMdIcons
+  class='print:hidden'
+>
+  <div slot='footer' />
+</ninja-keys>
+
+<script>
+  import 'ninja-keys'
+  import type { NinjaKeys } from 'ninja-keys'
+  import { handleToggleClick } from '@/theme'
+
+  interface Data {
+    id: string
+    section: string
+    title: string
+    icon: any
+    hotkey: string
+    url?: string
+    handler: () => void
+  }
+
+  const ninja: NinjaKeys | null = document.querySelector('ninja-keys')
+  const button = document.getElementById('ninja-button')
+
+  const actions = ninja?.getAttribute('data-actions') ?? '[]'
+  const links = ninja?.getAttribute('data-links') ?? '[]'
+  const parsedActions = JSON.parse(actions) as Data[]
+  const parsedLinks = JSON.parse(links) as Data[]
+
+  const handlePrint = () => {
+    const isDark = document.documentElement.classList.contains('dark')
+
+    if (isDark) {
+      handleToggleClick()
+      window.print()
+      handleToggleClick()
+    } else {
+      window.print()
+    }
+  }
+
+  const handleDownload = () => {
+    const URL = './assets/resume.pdf'
+
+    const link = document.createElement('a')
+    link.style.display = 'none'
+
+    link.setAttribute('href', URL)
+    link.setAttribute('download', 'Santiago-Ramos_Full-Stack-Developer_Resume.pdf')
+
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const actionsData = parsedActions.map(({ id, section, title, icon, hotkey }) => {
+    return {
+      id,
+      section,
+      title,
+      icon,
+      hotkey,
+      handler:
+        id === 'print'
+          ? () => handlePrint()
+          : id === 'download'
+            ? () => handleDownload()
+            : id === 'theme'
+              ? () => handleToggleClick()
+              : () => {}
+    }
+  })
+
+  const linksData = parsedLinks.map(({ id, section, title, icon, url, hotkey }) => {
+    return {
+      id,
+      section,
+      title,
+      icon,
+      hotkey,
+      handler: () => {
+        if (url) {
+          window.open(url, '_blank')
+        }
+      }
+    }
+  })
+
+  if (ninja) {
+    ninja.data = [
+      ...actionsData,
+      ...linksData
+    ]
+  }
+
+  button?.addEventListener('click', () => {
+    ninja?.open()
+  })
+</script>

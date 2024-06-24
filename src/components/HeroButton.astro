@@ -1,0 +1,18 @@
+---
+interface Props {
+  url: string
+  title: string
+}
+
+const { url, title } = Astro.props
+---
+
+<a
+  href={url}
+  title={title}
+  target='_blank'
+  rel='noopener noreferrer'
+  class='group/hero-button print:px-2.5 print:py-0.5 print:-mt-8 transition print:space-x-1 delay-0 hover:delay-75 active:delay-0 rounded-md border bg-[#EAEFF5] dark:bg-[#172033] dark:text-slate-400 text-slate-600 flex justify-center items-center border-[#EAEFF5] dark:border-[#172033] active:border-[#EAEFF5] dark:active:border-[#172033] size-8 print:w-auto print:h-auto dark:hover:border-slate-700 hover:border-slate-300'
+>
+  <slot />
+</a>
