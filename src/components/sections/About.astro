@@ -1,0 +1,10 @@
+---
+import { resume } from '@/schema'
+import Section from '@/components/Section.astro'
+---
+
+<Section title='About'>
+  <p class='text-pretty text-sm dark:text-slate-300 text-slate-600'>
+    {resume?.basics.summary}
+  </p>
+</Section>
