@@ -1,0 +1,9 @@
+ninja-keys {
+    --ninja-accent-color: #475569;
+    --ninja-actions-height: auto;
+    --ninja-font-size: 15px;
+}
+
+ninja-keys::part(ninja-input) {
+    display: none;
+}
