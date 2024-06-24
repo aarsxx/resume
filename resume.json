@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Leonardo Andika",
-    "label": "Senior Software Engineer",
+    "label": "Senior Software Engineer & FPV Drone Pilot",
     "image": "me.png",
     "email": "leonardodika.13@gmail.com",
     "url": "https://arsx.xyz",
     "download": "",
-    "summary": "Experienced Full Stack Engineer with a comprehensive background in frontend, backend, and Android development. With *6 years of practical experience. Proficient in popular architectures and frameworks. Skilled at writing clean code and improving the overall development experience. Dedicated to continuous learning and sharing knowledge.\n\n",
+    "summary": "Experienced Full Stack Engineer with a comprehensive background in frontend, backend, and Android development. With 6 years of practical experience. \n Proficient in popular architectures and frameworks. Skilled at writing clean code and improving the overall development experience. Dedicated to continuous learning and sharing knowledge.",
     "location": {
       "city": "Jakarta",
       "country": "Indonesia",
@@ -44,7 +44,7 @@
       "url": "https://saharaapp.id",
       "startYear": "2022",
       "endYear": "Present",
-      "summary": "Building and maintaining Code, Scraping Data for research & development, Integration for partners and client\n▪ notable clients: Elected Political Candidates, Amar Bank, BPJamsostek, Tata Motors, Adidas Manufacture ID."
+      "summary": "▪ Building and maintaining Code, Scraping Data for research & development, Integration for partners and client \n ▪ notable clients: Elected Political Candidates, Amar Bank, BPJamsostek, Tata Motors, Adidas Manufacture ID."
     },
     {
       "name": "Sahara",
