@@ -1,12 +1,12 @@
 {
   "basics": {
-    "name": "Andika Leonardo",
-    "label": "Full Stack Engineer building user-friendly products with close attention to detail.",
-    "image": "",
+    "name": "Leonardo Andika",
+    "label": "Senior Software Engineer",
+    "image": "me.png",
     "email": "leonardodika.13@gmail.com",
     "url": "https://arsx.xyz",
     "download": "",
-    "summary": "As a Full Stack Developer, I've successfully taken multiple products. I tackle tasks with enthusiasm and a commitment to excellence, whether it's adding features or fixing bugs. Currently, I work mostly with TypeScript, React, Next, Node and Tailwind. I have over 2 years of experience working remotely with clients and companies.",
+    "summary": "Experienced Full Stack Engineer with a comprehensive background in frontend, backend, and Android development. With *6 years of practical experience. Proficient in popular architectures and frameworks. Skilled at writing clean code and improving the overall development experience. Dedicated to continuous learning and sharing knowledge.\n\n",
     "location": {
       "city": "Jakarta",
       "country": "Indonesia",
@@ -28,6 +28,43 @@
   },
   "work": [
     {
+      "name": "Epidemic Sound",
+      "position": "Senior Software Engineer",
+      "remote": true,
+      "url": "https://saharaapp.id",
+      "startYear": "2024",
+      "endYear": "Present",
+      "summary": "implement algorithms with Django & Golang for digital signal processing, with a focus on audio."
+    },
+    {
+      "since": true,
+      "name": "Digital Natives",
+      "position": "Lead Software Engineer",
+      "remote": false,
+      "url": "https://saharaapp.id",
+      "startYear": "2022",
+      "endYear": "Present",
+      "summary": "Building and maintaining Code, Scraping Data for research & development, Integration for partners and client\n▪ notable clients: Elected Political Candidates, Amar Bank, BPJamsostek, Tata Motors, Adidas Manufacture ID."
+    },
+    {
+      "name": "Sahara",
+      "position": "Senior Software Engineer",
+      "remote": false,
+      "url": "https://saharaapp.id",
+      "startYear": "2022",
+      "endYear": "2024",
+      "summary": "Coding, Building and maintaining Engineering Culture, Redesign Architecture for all Platforms. ▪ Create, Tracking, Monitoring and Reporting All KPI Engineering Goal, Timeline, Roadmap"
+    },
+    {
+      "name": "Sportiv",
+      "position": "Founding Member -> Techlead",
+      "remote": false,
+      "url": "https://sportiv.asia",
+      "startYear": "2020",
+      "endYear": "2022",
+      "summary": "Raised Pre-Seed $550k, Built a small, solid team of 30 engineers, products, and designers. with a good engineering culture. ▪ Built MVP Booking Android & iOS app, Next.js back-end from scratch with full tests, allowing us to achieve a lot more with\njust a small team."
+    },
+    {
       "name": "Brave Browser",
       "position": "iOS Engineer",
       "remote": true,
@@ -43,7 +80,7 @@
       "url": "https://workana.com/freelancer/17ffa35831ec4c7d66e49ab0cbad0e69",
       "startYear": "2019",
       "endYear": "2020",
-      "summary": " Generate creative and innovative app concepts and conduct in-depth user research to understand user needs, behaviors, and\nmotivations. Make the product into high-fidelity prototypes and Mvp. ▪ Conduct product tests to gather feedback, identify usability issues, and iterate on tech"
+      "summary": "Generate creative and innovative app concepts and conduct in-depth user research to understand user needs, behaviors, and\nmotivations. Make the product into high-fidelity prototypes and Mvp. ▪ Conduct product tests to gather feedback, identify usability issues, and iterate on tech"
     },
     {
       "name": "Bukalapak",
@@ -58,8 +95,8 @@
   "education": [
     {
       "institution": "Bina Nusantara University",
-      "url": "https://www.binus.ac.id",
-      "area": "Computer Science",
+      "url": "https://www.socs.binus.ac.id",
+      "area": "School of Computer Science",
       "studyType": "Bachelor's Degree",
       "startYear": "2016",
       "endYear": "2020"
@@ -136,22 +173,20 @@
     },
     {
       "language": "Chinese",
-      "fluency": "Intermedite"
+      "fluency": "Intermediate"
     }
   ],
   "projects": [
     {
-      "name": "Random",
-      "releaseDate": "2023",
-      "description": "Web Application for easy choices, sorting, grouping, and assigning tasks randomly.",
-      "url": "https://random.ccc.zone/",
-      "repository": "https://github.com/codecatcoffee/random",
+      "name": "Apple WWDC18",
+      "releaseDate": "2018",
+      "description": "Won the 2018 ticket with Golf GO, golf game written in 1000 lines. Achieved runtime mesh modification by applying noise value",
+      "url": "https://github.com/aarsxx/wwdc18",
+      "repository": "https://github.com/aarsxx/wwdc18",
       "isActive": true,
       "keywords": [
-        "JavaScript",
-        "React",
-        "Node",
-        "MongoDB"
+        "Swift",
+        "Playground"
       ]
     }
   ]

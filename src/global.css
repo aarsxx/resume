@@ -7,3 +7,7 @@ ninja-keys {
 ninja-keys::part(ninja-input) {
     display: none;
 }
+
+body {
+    font-family: 'Geist-Black', sans-serif;
+}

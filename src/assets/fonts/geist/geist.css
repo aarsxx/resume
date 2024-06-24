@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Geist-Light';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../geist/Geist-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./Geist-Black.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Geist-Bold';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./Geist-Bold.otf') format('opentype');
+}
